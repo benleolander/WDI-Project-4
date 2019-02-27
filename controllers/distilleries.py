@@ -50,4 +50,4 @@ def update(distillery_id):
 def delete(distillery_id):
     distillery = Distillery.query.get(distillery_id)
     distillery.remove()
-    
+    return '', 204
