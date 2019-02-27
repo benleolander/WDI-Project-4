@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, g
 from models.whisky import Whisky, WhiskySchema
 from models.distillery import Distillery, DistillerySchema
+from lib.secure_route import secure_route
 
 whisky_schema = WhiskySchema()
 whiskies_schema = WhiskySchema(many=True)
@@ -15,6 +16,7 @@ def index():
     return whiskies_schema.jsonify(whiskies)
 
 @api.route('/whiskies', methods=['POST'])
+@secure_route
 def create():
     whisky, errors = whisky_schema.load(request.get_json())
     # whisky.creator = g.current_user
@@ -35,6 +37,7 @@ def show(whisky_id):
     return whisky_schema.jsonify(whisky)
 
 @api.route('/whiskies/<int:whisky_id>', methods=['DELETE'])
+@secure_route
 def delete(whisky_id):
     whisky = Whisky.query.get(whisky_id)
     whisky.remove()
