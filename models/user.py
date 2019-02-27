@@ -60,6 +60,8 @@ class UserSchema(ma.ModelSchema, BaseSchema):
 
     tasted = fields.Nested('WhiskySchema', only=('name', ), many=True)
 
+    visited = fields.Nested('DistillerySchema', only=('name', ), many=True)
+
     class Meta:
         model = User
         exclude = ('password_hash', )
