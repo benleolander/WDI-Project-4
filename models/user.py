@@ -11,7 +11,7 @@ class User(db.Model, BaseModel):
     __tablename__ = 'users'
 
     username = db.Column(db.String(20), nullable=False, unique=True)
-    email = db.Column(db.String(128), nullable=True, unique=True)
+    email = db.Column(db.String(128), nullable=False, unique=True)
     password_hash = db.Column(db.String(128), nullable=True)
 
     @hybrid_property
@@ -58,7 +58,9 @@ class UserSchema(ma.ModelSchema, BaseSchema):
     )
     password_confirmation = fields.String(required=True)
 
+    tasted = fields.Nested('WhiskySchema', only=('name', ), many=True)
+
     class Meta:
         model = User
-        exclude = ('password_hash', 'sent_messages', 'received_messages')
+        exclude = ('password_hash', )
         load_only = ('password', 'password_confirmation')

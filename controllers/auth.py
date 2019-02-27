@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, g
 from models.user import UserSchema, User
-# from lib.secure_route import secure_route
+from lib.secure_route import secure_route
 
 api = Blueprint('auth', __name__)
 user_schema = UserSchema()
@@ -33,7 +33,7 @@ def login():
     })
 
 
-# @api.route('/me', methods=['GET'])
-# @secure_route
-# def me():
-#     return user_schema.jsonify(g.current_user)
+@api.route('/me', methods=['GET'])
+@secure_route
+def me():
+    return user_schema.jsonify(g.current_user)

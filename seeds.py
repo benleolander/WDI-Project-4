@@ -1,10 +1,23 @@
 from app import app, db
 from models.distillery import Distillery
 from models.whisky import Whisky
+from models.user import User
 
 with app.app_context():
     db.drop_all()
     db.create_all()
+
+    johnny = User(
+        username='JohnnyTwoTimes',
+        email='twotimes@twotimes.com'
+    )
+    johnny.save()
+
+    mongoose = User(
+        username='Mongoose',
+        email='busy@eatingsnakes.com'
+    )
+    mongoose.save()
 
     dalmore = Distillery(
         name='Dalmore Distillery',
@@ -45,7 +58,8 @@ with app.app_context():
         description='Dalmore’s trademark style is luscious notes of orange, chocolate and spices, and the 18 Year Old bottling is a terrific example. Aged in both bourbon and sherry casks, it has seductive notes of vanilla, dark chocolate and candied orange on the nose, followed by a full-bodied, spicy palate of cinnamon and stewed fruit.',
         abv=43,
         cask='Bourbon, Sherry',
-        distillery=dalmore
+        distillery=dalmore,
+        tasted_by=[johnny, mongoose]
     )
     dalmore_18.save()
 
@@ -57,7 +71,8 @@ with app.app_context():
         description='To make Dalmore King Alexander III, Master Distiller Richard Paterson selected a range of differently aged malts matured in a mixure of French wine casks, Madeira drums, sherry butts, Marsala barrels, port pipes and bourbon barrels from Kentucky. A remarkable feat of blending.',
         abv=40,
         cask='Wine, Madeira, Sherry, Marsala, Port, Bourbon',
-        distillery=dalmore
+        distillery=dalmore,
+        tasted_by=[johnny]
     )
     king_alexander.save()
 

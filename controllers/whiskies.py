@@ -36,6 +36,34 @@ def show(whisky_id):
     whisky = Whisky.query.get(whisky_id)
     return whisky_schema.jsonify(whisky)
 
+@api.route('/whiskies/<int:whisky_id>', methods=['PUT'])
+@secure_route
+def update(whisky_id):
+
+    whisky = Whisky.query.get(whisky_id)
+
+    whisky, errors = whisky_schema.load(request.get_json(), instance=whisky)
+
+    if errors:
+        return jsonify(errors), 422
+
+    whisky.save()
+
+    return whisky_schema.jsonify(whisky), 200
+
+@api.route('/whiskies/<int:whisky_id>/taste', methods=['PUT'])
+@secure_route
+def taste(whisky_id):
+
+    whisky = Whisky.query.get(whisky_id)
+    user = g.current_user
+
+    whisky.tasted_by.append(user)
+
+    whisky.save()
+
+    return whisky_schema.jsonify(whisky), 200
+
 @api.route('/whiskies/<int:whisky_id>', methods=['DELETE'])
 @secure_route
 def delete(whisky_id):
