@@ -25,7 +25,8 @@ with app.app_context():
         image='https://upload.wikimedia.org/wikipedia/commons/8/86/Scotland_Alness_Dalmore_Distillery.jpg',
         founded=1839,
         town='Alness',
-        country='Scotland'
+        country='Scotland',
+        visited_by=[johnny]
     )
     dalmore.save()
 

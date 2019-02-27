@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, g
 from models.distillery import Distillery, DistillerySchema
 from lib.secure_route import secure_route
 
@@ -40,6 +40,19 @@ def update(distillery_id):
 
     if errors:
         return jsonify(errors), 422
+
+    distillery.save()
+
+    return distillery_schema.jsonify(distillery), 200
+
+@api.route('/distilleries/<int:distillery_id>/visit', methods=['PUT'])
+@secure_route
+def taste(distillery_id):
+
+    distillery = Distillery.query.get(distillery_id)
+    user = g.current_user
+
+    distillery.visited_by.append(user)
 
     distillery.save()
 
