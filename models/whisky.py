@@ -13,7 +13,7 @@ class Whisky(db.Model, BaseModel):
     abv = db.Column(db.Float, nullable=False)
     cask = db.Column(db.String(30), nullable=True)
     distillery_id = db.Column(db.Integer, db.ForeignKey('distilleries.id'))
-    distillery = db.relationship('Distilleries', backref="whiskies")
+    distillery = db.relationship('Distillery', backref="whiskies")
 
 class WhiskySchema(ma.ModelSchema, BaseSchema):
 
