@@ -9,6 +9,7 @@ class Auth {
   }
 
   static removeToken() {
+    console.log('Removing Token')
     localStorage.removeItem('token')
   }
 

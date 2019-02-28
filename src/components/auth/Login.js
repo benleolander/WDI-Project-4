@@ -35,40 +35,44 @@ class Login extends React.Component {
 
   render() {
     return(
-      <form onSubmit={this.handleSubmit}>
-        <h2 className="title">Login</h2>
+      <section className="section">
+        <div className="container">
+          <form onSubmit={this.handleSubmit}>
+            <h2 className="title">Login</h2>
 
 
-        <div className="field">
-          <label className="label">Email Address</label>
-          <div className="control">
-            <input
-              className="input"
-              name="email"
-              placeholder="Email"
-              value={this.state.data.email}
-              onChange={this.handleChange}
-            />
-          </div>
+            <div className="field">
+              <label className="label">Email Address</label>
+              <div className="control">
+                <input
+                  className="input"
+                  name="email"
+                  placeholder="Email"
+                  value={this.state.data.email}
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+
+            <div className="field">
+              <label className="label">Password</label>
+              <div className="control">
+                <input
+                  className="input"
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                  value={this.state.data.password}
+                  onChange={this.handleChange}
+                />
+              </div>
+            </div>
+
+            <button className="button is-info">Submit</button>
+
+          </form>
         </div>
-
-        <div className="field">
-          <label className="label">Password</label>
-          <div className="control">
-            <input
-              className="input"
-              name="password"
-              type="password"
-              placeholder="Password"
-              value={this.state.data.password}
-              onChange={this.handleChange}
-            />
-          </div>
-        </div>
-
-        <button className="button is-info">Submit</button>
-
-      </form>
+      </section>
     )
   }
 }

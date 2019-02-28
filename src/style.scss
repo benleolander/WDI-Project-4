@@ -31,6 +31,15 @@
     margin: auto 10px;
   }
 
+  button.navbaritem {
+    font-size: 100%;
+    font-family: inherit;
+    border: 0;
+    padding: 0;
+    color: white;
+    background-color: inherit;
+  }
+
   :hover {
     border-bottom: 3px solid white;
   }

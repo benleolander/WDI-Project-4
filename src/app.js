@@ -10,11 +10,11 @@ import Home from './components/Home'
 import WhiskiesIndex from './components/whiskies/WhiskiesIndex'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
+import ProfileShow from './components/ProfileShow'
 
 class App extends React.Component {
 
   render() {
-    // if(!this.state) return <h1>Loading...</h1>
     return (
       <BrowserRouter>
 
@@ -26,6 +26,7 @@ class App extends React.Component {
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
             <Route path="/whiskies" component={WhiskiesIndex} />
+            <Route path="/me" component={ProfileShow} />
             <Route path="/" component={Home} />
           </Switch>
 

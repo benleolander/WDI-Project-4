@@ -7,6 +7,12 @@ class Navbar extends React.Component {
   constructor() {
     super()
 
+    this.logout = this.logout.bind(this)
+  }
+
+  logout() {
+    Auth.removeToken()
+    this.props.history.push('/')
   }
 
   render() {
@@ -52,9 +58,9 @@ class Navbar extends React.Component {
                 My Profile
               </Link> }
 
-              {Auth.isAuthenticated() && <Link to="/me" className="navbaritem">
+              {Auth.isAuthenticated() && <button onClick={this.logout} className="navbaritem">
                 Logout
-              </Link> }
+              </button> }
 
             </div>
 
