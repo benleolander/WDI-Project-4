@@ -1,6 +1,7 @@
 import React from 'react'
 
 const RegisterForm = ({ data, handleChange, handleSubmit }) => {
+  
   const { username, email, password, password_confirmation } = data // eslint-disable-line
 
   return(

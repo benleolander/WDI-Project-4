@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import axios from 'axios'
 
 import WhiskyCard from './WhiskyCard'
@@ -23,7 +25,9 @@ class WhiskiesIndex extends React.Component {
           <div className="columns is-multiline">
             {this.state.whiskies.map(whisky =>
               <div className="column is-one-quarter" key={whisky.id}>
-                <WhiskyCard{...whisky} />
+                <Link to={`/whiskies/${whisky.id}`}>
+                  <WhiskyCard{...whisky} />
+                </Link>
               </div>
             )}
           </div>

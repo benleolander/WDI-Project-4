@@ -23,8 +23,16 @@ class ProfileShow extends React.Component {
 
   render() {
     if(!this.state.data) return <h1>Loading...</h1>
+    const { username, email, created_at, visited, tasted } = this.state.data // eslint-disable-line
     return(
-      <h1>My profile</h1>
+      <div>
+        <h1>My profile</h1>
+        <p>{username}</p>
+        <p>{email}</p>
+        <p>{created_at}</p>
+        {visited.length === 0? <p>You have not visited anywhere yet.</p> : <p>Visited places</p>}
+        {tasted.length === 0? <p>You haven not tasted any whisky yet.</p> : <p>Whiskies tasted</p>}
+      </div>
     )
   }
 }

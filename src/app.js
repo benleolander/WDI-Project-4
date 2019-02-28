@@ -8,6 +8,7 @@ import './style.scss'
 import Navbar from './components/common/Navbar'
 import Home from './components/Home'
 import WhiskiesIndex from './components/whiskies/WhiskiesIndex'
+import WhiskyShow from './components/whiskies/WhiskyShow'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import ProfileShow from './components/ProfileShow'
@@ -25,6 +26,7 @@ class App extends React.Component {
           <Switch>
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
+            <Route path="/whiskies/:id" component={WhiskyShow} />
             <Route path="/whiskies" component={WhiskiesIndex} />
             <Route path="/me" component={ProfileShow} />
             <Route path="/" component={Home} />
