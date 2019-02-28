@@ -1,7 +1,9 @@
+$primary: rgb(128,63,30);
+
 //NAVBAR COMPONENT *************************************************************
 
 .navbar {
-  background-color: rgb(128,63,30);
+  background-color: $primary;
 }
 
 #navbar-hero {
@@ -79,4 +81,29 @@ a#navbar-logo.navbar-item {
 h3.title {
   font-family: 'Josefin Sans', sans-serif;
   font-weight: 700;
+}
+
+#whisky-show-img {
+  img {
+    max-height: 75vh;
+    width: auto;
+    margin: 0 auto;
+  }
+}
+
+//FOOTER COMPONENT *************************************************************
+
+.footer {
+  background-color: $primary;
+
+  div {
+    p {
+      color: white;
+      strong {
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: 700;
+        color: white;
+      }
+    }
+  }
 }

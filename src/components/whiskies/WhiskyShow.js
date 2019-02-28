@@ -76,8 +76,11 @@ class WhiskyShow extends React.Component {
             </div>
 
             <div className="column is-half">
-              <img src={image} />
+              <figure className="image is-3by4" id="whisky-show-img">
+                <img src={image} />
+              </figure>
             </div>
+            
           </div>
 
         </div>
