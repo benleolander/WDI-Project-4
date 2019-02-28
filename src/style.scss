@@ -1,0 +1,82 @@
+//NAVBAR COMPONENT *************************************************************
+
+.navbar {
+  background-color: rgb(128,63,30);
+}
+
+#navbar-hero {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+  color: white;
+}
+
+a#navbar-logo.navbar-item {
+  padding: 0;
+  img {
+    height: 55px;
+    width: auto;
+  }
+}
+
+.navbar-item img {
+  max-height: none;
+}
+
+.navbar-menu {
+  font-family: 'Open Sans', sans-serif;
+
+  a.navbaritem {
+    color: white;
+    margin: auto 10px;
+  }
+
+  :hover {
+    border-bottom: 3px solid white;
+  }
+}
+
+.navbar-end {
+  font-family: 'Open Sans', sans-serif;
+
+  a.navbaritem {
+    color: white;
+    margin: auto 10px;
+  }
+
+  button.navbaritem {
+    font-size: 100%;
+    font-family: inherit;
+    border: 0;
+    padding: 0;
+    color: white;
+    background-color: inherit;
+  }
+
+  :hover {
+    border-bottom: 3px solid white;
+  }
+}
+
+//HOME COMPONENT ***************************************************************
+
+#homeColumn1 {
+  background-image: url('./assets/whiskyShelf.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+  height: 100vh;
+}
+
+#homeColumn2 {
+  background-image: url('./assets/distilleryStill.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-clip: border-box;
+}
+
+//WHISKYSHOW COMPONENT *********************************************************
+
+h3.title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
+}
