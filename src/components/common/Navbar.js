@@ -29,14 +29,25 @@ class Navbar extends React.Component {
               <Link to="/whiskies" className="navbaritem">
                 Whiskies
               </Link>
-              
+
               <Link to="/distilleries" className="navbaritem">
                 Distilleries
               </Link>
 
+            </div>
 
+            <div className="navbar-end">
+
+              <Link to="/login" className="navbaritem">
+                Login
+              </Link>
+
+              <Link to="/register" className="navbaritem">
+                Register
+              </Link>
 
             </div>
+
           </div>
         </nav>
       </div>
@@ -44,4 +55,4 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar
+export default withRouter(Navbar)

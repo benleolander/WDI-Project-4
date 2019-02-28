@@ -1,3 +1,5 @@
+//NAVBAR COMPONENT *************************************************************
+
 .navbar {
   background-color: rgb(128,63,30);
 }
@@ -20,6 +22,21 @@
     border-bottom: 3px solid white;
   }
 }
+
+.navbar-end {
+  font-family: 'Open Sans', sans-serif;
+
+  a.navbaritem {
+    color: white;
+    margin: auto 10px;
+  }
+
+  :hover {
+    border-bottom: 3px solid white;
+  }
+}
+
+//HOME COMPONENT ***************************************************************
 
 #homeColumn1 {
   background-image: url('./assets/whiskyShelf.jpg');
