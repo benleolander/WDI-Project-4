@@ -1,11 +1,16 @@
 import React from 'react'
 import axios from 'axios'
 
+import Auth from '../../lib/Auth'
+
 class WhiskyShow extends React.Component {
   constructor() {
     super()
 
     this.state = {}
+
+    this.addToTasted = this.addToTasted.bind(this)
+    this.checkIfTasted = this.checkIfTasted.bind(this)
   }
 
   componentDidMount() {
@@ -14,10 +19,34 @@ class WhiskyShow extends React.Component {
       .then(res => this.setState({ data: res.data }))
   }
 
+  addToTasted() {
+    axios
+      .get(
+        `/api/whiskies/${this.props.match.params.id}/taste`,
+        { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
+      .then(()=> {
+        axios
+          .get(`/api/whiskies/${this.props.match.params.id}`)
+          .then(res => this.setState({ data: res.data }))
+      })
+  }
+
+  checkIfTasted() {
+    const { tasted_by } = this.state.data // eslint-disable-line
+    const currentUser = Auth.getCurrentUser()
+
+    let result = false
+
+    tasted_by.forEach(user => {
+      if(user.id === currentUser) result = true
+    })
+    return result
+  }
+
   render() {
     if(!this.state.data) return <h1>Loading...</h1>
 
-    const { abv, age, cask, created_at, description, distillery, image, name, price, tasted_by } = this.state.data
+    const { abv, age, cask, description, distillery, image, name, price, tasted_by } = this.state.data // eslint-disable-line
 
     return(
       <section className="section">
@@ -39,8 +68,9 @@ class WhiskyShow extends React.Component {
               <hr />
               <p>This whisky has been tasted by {tasted_by.length} Whiskypedia users.</p>
 
-              
+              {Auth.isAuthenticated() && !this.checkIfTasted() && <button className="button is-primary" onClick={this.addToTasted}>{'I\'ve tried '}{name}</button>}
 
+              {Auth.isAuthenticated() && this.checkIfTasted() && <button className="button is-primary" disabled>{'You\'ve already tasted this whisky!'}</button>}
             </div>
 
             <div className="column is-half">

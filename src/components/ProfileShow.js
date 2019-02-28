@@ -8,17 +8,12 @@ class ProfileShow extends React.Component {
     super()
 
     this.state = {}
-
-
   }
 
   componentDidMount() {
     axios
       .get('/api/me', { headers: { Authorization: `Bearer ${Auth.getToken()}` } })
-      .then(res => {
-        console.log(res)
-        this.setState({ data: res.data })
-      })
+      .then(res => this.setState({ data: res.data }))
   }
 
   render() {
@@ -29,8 +24,7 @@ class ProfileShow extends React.Component {
         <h1>My profile</h1>
         <p>{username}</p>
         <p>{email}</p>
-        <p>{created_at}</p>
-        {visited.length === 0? <p>You have not visited anywhere yet.</p> : <p>Visited places</p>}
+        {visited.length === 0? <p>You have not visited anywhere yet.</p> : <p>Distilleries visited</p>}
         {tasted.length === 0? <p>You haven not tasted any whisky yet.</p> : <p>Whiskies tasted</p>}
       </div>
     )

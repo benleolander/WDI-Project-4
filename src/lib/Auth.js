@@ -9,7 +9,6 @@ class Auth {
   }
 
   static removeToken() {
-    console.log('Removing Token')
     localStorage.removeItem('token')
   }
 
@@ -30,6 +29,11 @@ class Auth {
     if (!payload) return false
     const now = Math.floor(Date.now() / 1000)
     return now < payload.exp
+  }
+
+  static getCurrentUser() {
+    const payload = this.getPayload()
+    return payload.sub
   }
 
 
