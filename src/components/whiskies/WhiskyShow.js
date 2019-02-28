@@ -71,6 +71,8 @@ class WhiskyShow extends React.Component {
               {Auth.isAuthenticated() && !this.checkIfTasted() && <button className="button is-primary" onClick={this.addToTasted}>{'I\'ve tried '}{name}</button>}
 
               {Auth.isAuthenticated() && this.checkIfTasted() && <button className="button is-primary" disabled>{'You\'ve already tasted this whisky!'}</button>}
+
+              {!Auth.isAuthenticated() && <p className="section"><a href="/register">Join the Whiskypedia community today</a> to discover new whiskies and begin your journey!</p>}
             </div>
 
             <div className="column is-half">

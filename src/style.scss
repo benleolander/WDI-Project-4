@@ -13,7 +13,7 @@
 a#navbar-logo.navbar-item {
   padding: 0;
   img {
-    height: 62px;
+    height: 55px;
     width: auto;
   }
 }
@@ -72,4 +72,11 @@ a#navbar-logo.navbar-item {
   background-size: cover;
   background-repeat: no-repeat;
   background-clip: border-box;
+}
+
+//WHISKYSHOW COMPONENT *********************************************************
+
+h3.title {
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 700;
 }
