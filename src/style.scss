@@ -10,6 +10,18 @@
   color: white;
 }
 
+a#navbar-logo.navbar-item {
+  padding: 0;
+  img {
+    height: 62px;
+    width: auto;
+  }
+}
+
+.navbar-item img {
+  max-height: none;
+}
+
 .navbar-menu {
   font-family: 'Open Sans', sans-serif;
 

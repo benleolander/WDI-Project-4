@@ -21,6 +21,9 @@ class Navbar extends React.Component {
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="container">
             <div className="navbar-brand">
+              <a className="navbar-item" id="navbar-logo" href="/">
+                <img src="../../../assets/logo.png" />
+              </a>
               <Link to="/" className="navbar-item">
                 <h1 className="title is-2"><span id="navbar-hero">Whiskypedia</span></h1>
               </Link>
