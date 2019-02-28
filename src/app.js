@@ -6,6 +6,7 @@ import 'bulma'
 import './style.scss'
 
 import Navbar from './components/common/Navbar'
+import Footer from './components/common/Footer'
 import Home from './components/Home'
 import DistilleriesShow from './components/distilleries/DistilleriesIndex'
 import DistilleriesIndex from './components/distilleries/DistilleriesIndex'
@@ -35,6 +36,8 @@ class App extends React.Component {
             <Route path="/me" component={ProfileShow} />
             <Route path="/" component={Home} />
           </Switch>
+
+          <Footer />
 
         </main>
 
