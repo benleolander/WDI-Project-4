@@ -29,7 +29,7 @@ class Register extends React.Component {
     e.preventDefault()
     axios
       .post('/api/register', this.state.data)
-      .then(() => this.props.history.push('/'))
+      .then(() => this.props.history.push('/login'))
   }
 
   render() {

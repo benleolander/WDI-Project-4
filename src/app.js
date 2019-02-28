@@ -9,6 +9,7 @@ import Navbar from './components/common/Navbar'
 import Home from './components/Home'
 import WhiskiesIndex from './components/whiskies/WhiskiesIndex'
 import Register from './components/auth/Register'
+import Login from './components/auth/Login'
 
 class App extends React.Component {
 
@@ -23,6 +24,7 @@ class App extends React.Component {
 
           <Switch>
             <Route path="/register" component={Register} />
+            <Route path="/login" component={Login} />
             <Route path="/whiskies" component={WhiskiesIndex} />
             <Route path="/" component={Home} />
           </Switch>

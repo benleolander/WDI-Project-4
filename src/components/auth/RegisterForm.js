@@ -1,7 +1,7 @@
 import React from 'react'
 
 const RegisterForm = ({ data, handleChange, handleSubmit }) => {
-  const { username, email, password, password_confirmation } = data
+  const { username, email, password, password_confirmation } = data // eslint-disable-line
 
   return(
     <form onSubmit={handleSubmit}>
@@ -55,7 +55,7 @@ const RegisterForm = ({ data, handleChange, handleSubmit }) => {
             name="password_confirmation"
             type="password"
             placeholder="Type your password again"
-            value={password_confirmation}
+            value={password_confirmation} // eslint-disable-line
             onChange={handleChange}
           />
         </div>

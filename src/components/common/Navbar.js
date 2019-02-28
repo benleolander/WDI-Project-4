@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
+import Auth from '../../lib/Auth'
+
 class Navbar extends React.Component {
   constructor() {
     super()
@@ -38,13 +40,21 @@ class Navbar extends React.Component {
 
             <div className="navbar-end">
 
-              <Link to="/login" className="navbaritem">
+              {!Auth.isAuthenticated() && <Link to="/login" className="navbaritem">
                 Login
-              </Link>
+              </Link> }
 
-              <Link to="/register" className="navbaritem">
+              {!Auth.isAuthenticated() && <Link to="/register" className="navbaritem">
                 Register
-              </Link>
+              </Link> }
+
+              {Auth.isAuthenticated() && <Link to="/me" className="navbaritem">
+                My Profile
+              </Link> }
+
+              {Auth.isAuthenticated() && <Link to="/me" className="navbaritem">
+                Logout
+              </Link> }
 
             </div>
 
