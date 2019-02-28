@@ -24,6 +24,7 @@
     "bulma": "^0.7.4",
     "css-loader": "^2.1.0",
     "dotenv-webpack": "^1.7.0",
+    "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.11.0",
     "react": "^16.8.3",
@@ -31,6 +32,7 @@
     "react-router-dom": "^4.3.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3"
   }

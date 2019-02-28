@@ -1,8 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import 'bulma'
+import './style.scss'
 
+import Navbar from './components/common/Navbar'
+import Home from './components/Home'
 import WhiskiesIndex from './components/whiskies/WhiskiesIndex'
 
 class App extends React.Component {
@@ -10,12 +14,20 @@ class App extends React.Component {
   render() {
     // if(!this.state) return <h1>Loading...</h1>
     return (
-      <main>
-        <h1 className="title is-1">Whiskypedia</h1>
+      <BrowserRouter>
 
-        <WhiskiesIndex />
+        <main>
 
-      </main>
+          <Navbar />
+
+          <Switch>
+            <Route path="/whiskies" component={WhiskiesIndex} />
+            <Route path="/" component={Home} />
+          </Switch>
+
+        </main>
+
+      </BrowserRouter>
     )
   }
 }
