@@ -61,6 +61,8 @@ const RegisterForm = ({ data, handleChange, handleSubmit }) => {
         </div>
       </div>
 
+      <button className="button is-info">Submit</button>
+
     </form>
   )
 }
