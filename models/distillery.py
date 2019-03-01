@@ -23,7 +23,7 @@ class Distillery(db.Model, BaseModel):
 
 class DistillerySchema(ma.ModelSchema, BaseSchema):
 
-    whiskies = fields.Nested('WhiskySchema', only=('name', 'price'), many=True)
+    whiskies = fields.Nested('WhiskySchema', only=('name', 'price', 'id', 'image'), many=True)
     visited_by = fields.Nested('UserSchema', only=('id', 'username'), many=True)
 
     class Meta:

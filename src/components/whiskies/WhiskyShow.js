@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import Auth from '../../lib/Auth'
@@ -56,7 +57,7 @@ class WhiskyShow extends React.Component {
           <div className="columns">
 
             <div className="column is-half">
-              <h4 className="subtitle">{distillery.name}, {distillery.country}</h4>
+              <Link to={`/distilleries/${distillery.id}`}><h4 className="subtitle">{distillery.name}, {distillery.country}</h4></Link>
               {age && <h4 className="subtitle">Aged {age} years</h4>}
               <hr />
               <p>{description}</p>
@@ -80,7 +81,7 @@ class WhiskyShow extends React.Component {
                 <img src={image} />
               </figure>
             </div>
-            
+
           </div>
 
         </div>
