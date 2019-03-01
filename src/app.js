@@ -12,6 +12,7 @@ import DistilleryShow from './components/distilleries/DistilleryShow'
 import DistilleriesIndex from './components/distilleries/DistilleriesIndex'
 import WhiskiesIndex from './components/whiskies/WhiskiesIndex'
 import WhiskyShow from './components/whiskies/WhiskyShow'
+import WhiskyNew from './components/whiskies/WhiskyNew'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
 import ProfileShow from './components/ProfileShow'
@@ -29,6 +30,7 @@ class App extends React.Component {
           <Switch>
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
+            <Route path="/whiskies/new" component={WhiskyNew} />
             <Route path="/whiskies/:id" component={WhiskyShow} />
             <Route path="/whiskies" component={WhiskiesIndex} />
             <Route path="/distilleries/:id" component={DistilleryShow} />

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 import WhiskyCard from './WhiskyCard'
+import Auth from '../../lib/Auth'
 
 class WhiskiesIndex extends React.Component {
   constructor() {
@@ -20,19 +21,22 @@ class WhiskiesIndex extends React.Component {
   render() {
     if(!this.state.whiskies) return <h1>Loading...</h1>
     return (
-      <section className="section">
-        <div className="container">
-          <div className="columns is-multiline">
-            {this.state.whiskies.map(whisky =>
-              <div className="column is-one-quarter" key={whisky.id}>
-                <Link to={`/whiskies/${whisky.id}`}>
-                  <WhiskyCard{...whisky} />
-                </Link>
-              </div>
-            )}
+      <div>
+        {Auth.isAuthenticated() && <Link to='/whiskies/new'><button className="button is-primary is-pulled-right">Add a Whisky</button></Link>}
+        <section className="section">
+          <div className="container">
+            <div className="columns is-multiline">
+              {this.state.whiskies.map(whisky =>
+                <div className="column is-one-quarter" key={whisky.id}>
+                  <Link to={`/whiskies/${whisky.id}`}>
+                    <WhiskyCard{...whisky} />
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     )
   }
 }

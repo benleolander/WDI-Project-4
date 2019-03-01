@@ -22,7 +22,7 @@ def create():
     # whisky.creator = g.current_user
 
     # This line is for development use only, will break in production
-    whisky.distillery = Distillery.query.get(1)
+    # whisky.distillery = Distillery.query.get(1)
 
     if errors:
         return jsonify(errors), 422
