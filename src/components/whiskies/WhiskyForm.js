@@ -27,7 +27,7 @@ const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, 
           <select
             className="input"
             name="distillery"
-            defaultValue="Please Choose..."
+            defaultValue={distillery.name || 'Please Choose...'}
             onChange={handleDistilleryChange}
           >
             <option disabled>Please Choose...</option>

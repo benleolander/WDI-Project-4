@@ -66,6 +66,7 @@ class WhiskyShow extends React.Component {
                 <p><strong>Cask(s): </strong>{cask}</p>
                 <p><strong>£{price}</strong></p>
               </div>
+              {Auth.isAuthenticated() && <Link to={`/whiskies/${this.props.match.params.id}/edit`}><button className="button is-info">Edit</button></Link>}
               <hr />
               <p>This whisky has been tasted by {tasted_by.length} Whiskypedia users.</p>
 
