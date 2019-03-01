@@ -1,6 +1,6 @@
 import React from 'react'
 
-const WhiskyForm = ({ data, distilleries, handleChange, handleSubmit }) => {
+const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, handleSubmit }) => {
 
   const {  abv, age, cask, description, distillery, image, name, price } = data
 
@@ -27,13 +27,13 @@ const WhiskyForm = ({ data, distilleries, handleChange, handleSubmit }) => {
           <select
             className="input"
             name="distillery"
-            value={distillery}
-            onChange={handleChange}
+            defaultValue="Please Choose..."
+            onChange={handleDistilleryChange}
           >
             <option disabled>Please Choose...</option>
 
-            {distilleries.map((mappedDistillery, i) => {
-              return <option key={i} value={mappedDistillery}>
+            {distilleries.map(mappedDistillery => {
+              return <option key={mappedDistillery.id} value={mappedDistillery.id}>
                 {mappedDistillery.name}
               </option>
             })}

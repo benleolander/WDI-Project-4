@@ -3,6 +3,7 @@ import React from 'react'
 import axios from 'axios'
 
 import WhiskyForm from './WhiskyForm'
+import Auth from '../../lib/Auth'
 
 class WhiskyNew extends React.Component {
   constructor() {
@@ -22,6 +23,7 @@ class WhiskyNew extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleDistilleryChange = this.handleDistilleryChange.bind(this)
   }
 
   componentDidMount() {
@@ -34,10 +36,20 @@ class WhiskyNew extends React.Component {
     this.setState({ data })
   }
 
+  handleDistilleryChange({target: { value }}) {
+    const distillery = this.state.distilleries.find(distillery => distillery.id === parseInt(value))
+    const data = { ...this.state.data, distillery }
+    this.setState({ data })
+  }
+
   handleSubmit(e) {
     e.preventDefault()
     axios
-      .post('/api/whiskies', this.state.data)
+      .post(
+        '/api/whiskies',
+        this.state.data,
+        { headers: { Authorization: `Bearer ${Auth.getToken()}`}}
+      )
       .then(() => this.props.history.push('/whiskies'))
   }
 
@@ -50,6 +62,7 @@ class WhiskyNew extends React.Component {
             data={this.state.data}
             distilleries={this.state.distilleries}
             handleChange={this.handleChange}
+            handleDistilleryChange={this.handleDistilleryChange}
             handleSubmit={this.handleSubmit}
           />
         </div>
