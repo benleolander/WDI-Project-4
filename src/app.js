@@ -11,6 +11,7 @@ import Home from './components/Home'
 import DistilleryShow from './components/distilleries/DistilleryShow'
 import DistilleriesIndex from './components/distilleries/DistilleriesIndex'
 import DistilleryNew from './components/distilleries/DistilleryNew'
+import DistilleryEdit from './components/distilleries/DistilleryEdit'
 import WhiskiesIndex from './components/whiskies/WhiskiesIndex'
 import WhiskyShow from './components/whiskies/WhiskyShow'
 import WhiskyEdit from './components/whiskies/WhiskyEdit'
@@ -37,6 +38,7 @@ class App extends React.Component {
             <Route path="/whiskies/:id" component={WhiskyShow} />
             <Route path="/whiskies" component={WhiskiesIndex} />
             <Route path="/distilleries/new" component={DistilleryNew} />
+            <Route path="/distilleries/:id/edit" component={DistilleryEdit} />
             <Route path="/distilleries/:id" component={DistilleryShow} />
             <Route path="/distilleries" component={DistilleriesIndex} />
             <Route path="/me" component={ProfileShow} />

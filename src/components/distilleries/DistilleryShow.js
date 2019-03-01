@@ -13,6 +13,7 @@ class DistilleryShow extends React.Component {
 
     this.addToVisited = this.addToVisited.bind(this)
     this.checkIfVisited = this.checkIfVisited.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
@@ -44,6 +45,13 @@ class DistilleryShow extends React.Component {
     return result
   }
 
+  handleDelete() {
+    axios.delete(`/api/distilleries/${this.props.match.params.id}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(() => this.props.history.push('/distilleries'))
+  }
+
 
   render() {
     if(!this.state.data) return <h1>Loading...</h1>
@@ -68,6 +76,12 @@ class DistilleryShow extends React.Component {
                 {town}, {country}
               </h4>
               <p><strong>Founded: </strong>{founded}</p>
+
+              {Auth.isAuthenticated() && <Link to={`/distilleries/${this.props.match.params.id}/edit`}><button className="button is-info">Edit</button></Link> }
+              {Auth.isAuthenticated() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
+
+              <hr />
+
               <p><strong>{visited_by.length}</strong> Whiskypedia users have visited {name}</p>
 
               {Auth.isAuthenticated() && !this.checkIfVisited() && <button className="button is-primary" onClick={this.addToVisited}>Add {name} to your visited distilleries</button> }
