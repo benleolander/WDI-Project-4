@@ -80,6 +80,7 @@ class WhiskyShow extends React.Component {
               {Auth.isAuthenticated() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
 
               <hr />
+
               <p>This whisky has been tasted by {tasted_by.length} Whiskypedia users.</p>
 
               {Auth.isAuthenticated() && !this.checkIfTasted() && <button className="button is-primary" onClick={this.addToTasted}>Add {name} to your tasted whiskies</button>}
