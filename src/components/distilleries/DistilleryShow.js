@@ -10,6 +10,9 @@ class DistilleryShow extends React.Component {
     super()
 
     this.state = {}
+
+    this.addToVisited = this.addToVisited.bind(this)
+    this.checkIfVisited = this.checkIfVisited.bind(this)
   }
 
   componentDidMount() {
@@ -17,6 +20,30 @@ class DistilleryShow extends React.Component {
       .get(`/api/distilleries/${this.props.match.params.id}`)
       .then(res => this.setState({ data: res.data}))
   }
+
+  addToVisited() {
+    axios
+      .get(
+        `/api/distilleries/${this.props.match.params.id}/visit`,
+        { headers: { Authorization: `Bearer ${Auth.getToken()}` } }
+      )
+      .then(() => {
+        axios
+          .get(`/api/distilleries/${this.props.match.params.id}`)
+          .then(res => this.setState({ data: res.data}))
+      })
+  }
+
+  checkIfVisited() {
+    const { visited_by } = this.state.data //eslint-disable-line
+    const currentUser = Auth.getCurrentUser()
+    let result = false
+    visited_by.forEach(user => {
+      if(user.id === currentUser) result = true
+    })
+    return result
+  }
+
 
   render() {
     if(!this.state.data) return <h1>Loading...</h1>
@@ -42,6 +69,10 @@ class DistilleryShow extends React.Component {
               </h4>
               <p><strong>Founded: </strong>{founded}</p>
               <p><strong>{visited_by.length}</strong> Whiskypedia users have visited {name}</p>
+
+              {Auth.isAuthenticated() && !this.checkIfVisited() && <button className="button is-primary" onClick={this.addToVisited}>Add {name} to your visited distilleries</button> }
+
+              {Auth.isAuthenticated() && this.checkIfVisited() && <button className="button is-primary" disabled>{'You\'ve marked this distillery as visited'}</button>}
 
               {!Auth.isAuthenticated() && <p className="section"><a href="/register">Join the Whiskypedia community today</a> to discover new whiskies and begin your journey!</p>}
             </div>
