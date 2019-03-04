@@ -1,4 +1,11 @@
 $primary: rgb(128,63,30);
+$header-font-family: 'Josefin Sans', sans-serif;
+$header-font-weight: 700;
+$body-font-family:  'Open Sans', sans-serif;
+
+* {
+  font-family: $body-font-family
+}
 
 //NAVBAR COMPONENT *************************************************************
 
@@ -7,8 +14,8 @@ $primary: rgb(128,63,30);
 }
 
 #navbar-hero {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 700;
+  font-family: $header-font-family;
+  font-weight: $header-font-weight;
   color: white;
 }
 
@@ -25,7 +32,7 @@ a#navbar-logo.navbar-item {
 }
 
 .navbar-menu {
-  font-family: 'Open Sans', sans-serif;
+  font-family: $body-font-family;
 
   a.navbaritem {
     color: white;
@@ -38,7 +45,7 @@ a#navbar-logo.navbar-item {
 }
 
 .navbar-end {
-  font-family: 'Open Sans', sans-serif;
+  font-family: $body-font-family;
 
   a.navbaritem {
     color: white;
@@ -76,11 +83,25 @@ a#navbar-logo.navbar-item {
   background-clip: border-box;
 }
 
+//WHISKIESINDEX COMPONENT ******************************************************
+
+#whisky-create-button {
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+///DISTILLERIESINDEX COMPONENT *************************************************
+
+#distillery-create-button {
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
 //WHISKYSHOW COMPONENT *********************************************************
 
 h3.title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 700;
+  font-family: $header-font-family;
+  font-weight: $header-font-weight;
 }
 
 #whisky-show-img {
@@ -88,6 +109,22 @@ h3.title {
     max-height: 75vh;
     width: auto;
     margin: 0 auto;
+  }
+}
+
+//DISTILLERYSHOW COMPONENT *****************************************************
+
+#mapDiv {
+  width: 100%;
+  height: 300px;
+}
+
+//PROFILESHOW COMPONENT ********************************************************
+
+.profile-show-column {
+  h1 {
+    font-family: $header-font-family;
+    font-weight: $header-font-weight;
   }
 }
 
@@ -100,8 +137,8 @@ h3.title {
     p {
       color: white;
       strong {
-        font-family: 'Josefin Sans', sans-serif;
-        font-weight: 700;
+        font-family: $header-font-family;
+        font-weight: $header-font-weight;
         color: white;
       }
     }

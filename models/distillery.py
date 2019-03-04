@@ -18,6 +18,8 @@ class Distillery(db.Model, BaseModel):
     founded = db.Column(db.Integer, nullable=True)
     town = db.Column(db.String(50), nullable=True)
     country = db.Column(db.String(50), nullable=True)
+    lat = db.Column(db.Float, nullable=True)
+    lng = db.Column(db.Float, nullable=True)
 
     visited_by = db.relationship('User', secondary=visited, backref='visited')
 

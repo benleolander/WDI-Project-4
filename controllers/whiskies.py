@@ -87,6 +87,6 @@ def recommend():
     whiskies = Whisky.query.all()
     liked_whiskies = filter(filter_likes, whiskies)
     unique_likes = filter(filter_uniques, liked_whiskies)
-    sorted_uniques = sorted(unique_likes, key=get_length)
+    sorted_uniques = sorted(unique_likes, key=get_length, reverse=True)
 
     return whisky_schema.jsonify(sorted_uniques[0])

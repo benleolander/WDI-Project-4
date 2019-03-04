@@ -1,9 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import mapboxgl from 'mapbox-gl'
+
+mapboxgl.accessToken = process.env.MAPBOX_TOKEN
 
 import WhiskyCard from '../whiskies/WhiskyCard'
 import Auth from '../../lib/Auth'
+
+import 'mapbox-gl/dist/mapbox-gl.css'
 
 class DistilleryShow extends React.Component {
   constructor() {
@@ -20,6 +25,25 @@ class DistilleryShow extends React.Component {
     axios
       .get(`/api/distilleries/${this.props.match.params.id}`)
       .then(res => this.setState({ data: res.data}))
+
+  }
+
+  componentDidUpdate() {
+    if(this.state.data.lat && this.state.data.lng) {
+      const { lat, lng } = this.state.data
+      this.map = new mapboxgl.Map({
+        container: 'mapDiv',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: {lat: lat, lng: lng},
+        zoom: 11
+      })
+      new mapboxgl.Marker()
+        .setLngLat({lat: lat, lng: lng})
+        .setPopup(new mapboxgl.Popup({ offset: 25}))
+        .addTo(this.map)
+
+      this.map.resize()
+    }
   }
 
   addToVisited() {
@@ -60,6 +84,9 @@ class DistilleryShow extends React.Component {
 
     return(
       <section className="section">
+
+
+
         <div className="container">
           <h3 className="title has-text-right">{name}</h3>
 
@@ -76,6 +103,9 @@ class DistilleryShow extends React.Component {
                 {town}, {country}
               </h4>
               <p><strong>Founded: </strong>{founded}</p>
+
+              {this.state.data.lat && this.state.data.lng && <div className="is-pulled-right has-text-left" id="mapDiv" />}
+
 
               {Auth.isAuthenticated() && <Link to={`/distilleries/${this.props.match.params.id}/edit`}><button className="button is-info">Edit</button></Link> }
               {Auth.isAuthenticated() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
@@ -108,7 +138,6 @@ class DistilleryShow extends React.Component {
               </div>
             )}
           </div>
-
         </div>
       </section>
     )

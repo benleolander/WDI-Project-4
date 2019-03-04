@@ -22,7 +22,7 @@ class DistilleriesIndex extends React.Component {
     if(!this.state.distilleries) return <h1>Loading...</h1>
     return (
       <div>
-        {Auth.isAuthenticated() && <Link to='/distilleries/new'><button className="button is-primary is-pulled-right">Add a Distillery</button></Link>}
+        {Auth.isAuthenticated() && <Link to='/distilleries/new'><button className="button is-primary is-pulled-right" id="distillery-create-button">Add a Distillery</button></Link>}
         <section className="section">
           <div className="container">
             <div className="columns is-multiline">
