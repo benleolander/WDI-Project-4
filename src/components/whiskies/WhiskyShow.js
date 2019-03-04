@@ -75,9 +75,9 @@ class WhiskyShow extends React.Component {
                 <p><strong>£{price}</strong></p>
               </div>
 
-              {Auth.isAuthenticated() && <Link to={`/whiskies/${this.props.match.params.id}/edit`}><button className="button is-info">Edit</button></Link>}
+              {Auth.isAuthenticated() && <Link to={`/whiskies/${this.props.match.params.id}/edit`}><button className="button is-info whisky-show-rerouter-button">Edit</button></Link>}
 
-              {Auth.isAuthenticated() && <button className="button is-danger" onClick={this.handleDelete}>Delete</button>}
+              {Auth.isAuthenticated() && <button className="button is-danger whisky-show-rerouter-button" onClick={this.handleDelete}>Delete</button>}
 
               <hr />
 

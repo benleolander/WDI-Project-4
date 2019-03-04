@@ -38,26 +38,62 @@ class ProfileShow extends React.Component {
           <div className="column is-half profile-show-column">
             <h1 className="title is-1 has-text-left">{username}</h1>
             <p className="subtitle has-text-left">{email}</p>
-            {visited.length === 0? <p>You have not visited anywhere yet.</p> : <p>Distilleries visited</p>}
-            {tasted.length === 0? <p>You haven not tasted any whisky yet.</p> : <p>Whiskies tasted</p>}
+
+            {tasted.length === 0 &&
+              <p>{'You haven\'t tasted any whiskies yet.'}</p>
+            }
+
+            {tasted.length > 0 &&
+              <div className="content">
+                <p>{'You\'ve tasted the following whiskies:'}</p>
+                <ul>
+                  {tasted.map(whisky =>
+                    <li key={whisky.id}>
+                      <Link to={`/whiskies/${whisky.id}`}>
+                        <p>{whisky.name}</p>
+                      </Link>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            }
+
+
+            {visited.length === 0 &&
+              <p>{'You haven\'t visited any distilleries yet.'}</p>
+            }
+
+            {visited.length > 0 &&
+              <div className="content">
+                <p>{'You\'ve visited the following distilleries:'}</p>
+                <ul>
+                  {visited.map(distillery =>
+                    <li key={distillery.id}>
+                      <Link to={`/distilleries/${distillery.id}`}>
+                        <p>{distillery.name}</p>
+                      </Link>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            }
+
           </div>
-        </div>
 
-        {!this.state.recommendation &&
-          <button className="button is-primary" onClick={this.generateRecommendation}>
-            Get a Whisky Recommendation
-          </button>
-        }
+          <div className="column is-half">
+            {!this.state.recommendation &&
+              <button className="button is-primary" onClick={this.generateRecommendation}>
+                Get a Whisky Recommendation
+              </button>
+            }
 
-        {this.state.recommendation &&
-          <div className="columns">
-            <div className="column is-one-quarter">
+            {this.state.recommendation &&
               <Link to={`/whiskies/${this.state.recommendation.id}`}>
                 <WhiskyCard {...this.state.recommendation}/>
               </Link>
-            </div>
+            }
           </div>
-        }
+        </div>
       </section>
     )
   }
