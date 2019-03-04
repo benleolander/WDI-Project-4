@@ -11,9 +11,18 @@
     "serve:flask": "pipenv run flask run -p 4000",
     "build": "webpack -p",
     "seed": "pipenv run python seeds.py",
+    "test": "mocha --require test/spec_helper --require ignore-styles test/**/*_spec.js --recursive --exit",
     "postinstall": "[ \"$NODE_ENV\" = \"production\" ] && yarn build || exit 0"
   },
   "devDependencies": {
+    "@babel/register": "^7.0.0",
+    "chai": "^4.2.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.10.0",
+    "ignore-styles": "^5.0.1",
+    "jsdom": "^13.2.0",
+    "mocha": "^6.0.2",
+    "sinon": "^7.2.7",
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
