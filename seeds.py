@@ -53,7 +53,7 @@ with app.app_context():
     macallan = Distillery(
         name='Macallan Distillery',
         # pylint: disable=C0301
-        image='https://upload.wikimedia.org/wikipedia/commons/8/8d/The_Macallan_Distillery.jpg',
+        image='https://static01.nyt.com/images/2018/07/25/dining/25burnerScotch/merlin_141445245_a85f0367-fff4-4c50-a76b-eda260e3eae3-superJumbo.jpg?quality=90&auto=webp',
         founded=1824,
         town='Moray',
         country='Scotland',
