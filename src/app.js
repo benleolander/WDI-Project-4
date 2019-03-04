@@ -1,23 +1,24 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Favicon from 'react-favicon'
 
 import './style.scss'
 
-import Navbar from './components/common/Navbar'
+import DistilleriesIndex from './components/distilleries/DistilleriesIndex'
+import DistilleryEdit from './components/distilleries/DistilleryEdit'
+import DistilleryNew from './components/distilleries/DistilleryNew'
+import DistilleryShow from './components/distilleries/DistilleryShow'
 import Footer from './components/common/Footer'
 import Home from './components/Home'
-import DistilleryShow from './components/distilleries/DistilleryShow'
-import DistilleriesIndex from './components/distilleries/DistilleriesIndex'
-import DistilleryNew from './components/distilleries/DistilleryNew'
-import DistilleryEdit from './components/distilleries/DistilleryEdit'
+import Login from './components/auth/Login'
+import Navbar from './components/common/Navbar'
+import ProfileShow from './components/ProfileShow'
+import Register from './components/auth/Register'
 import WhiskiesIndex from './components/whiskies/WhiskiesIndex'
-import WhiskyShow from './components/whiskies/WhiskyShow'
 import WhiskyEdit from './components/whiskies/WhiskyEdit'
 import WhiskyNew from './components/whiskies/WhiskyNew'
-import Register from './components/auth/Register'
-import Login from './components/auth/Login'
-import ProfileShow from './components/ProfileShow'
+import WhiskyShow from './components/whiskies/WhiskyShow'
 
 class App extends React.Component {
 
@@ -54,6 +55,9 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-  <App />,
+  <div>
+    <Favicon url='assets/logo.png'/>
+    <App />
+  </div>,
   document.getElementById('root')
 )
