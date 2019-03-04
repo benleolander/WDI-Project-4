@@ -4745,6 +4745,11 @@ react-dom@^16.8.3:
     prop-types "^15.6.2"
     scheduler "^0.13.3"
 
+react-favicon@^0.0.14:
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/react-favicon/-/react-favicon-0.0.14.tgz#3c9c7b999d106e6e112f729ab929b8dbec05b280"
+  integrity sha512-dE1Q13jgc5/Z49G3O3LSdJ87XGK6I4sIYmx3+ROYOEkt0wcrdP9J5wf2oDLtq7D9bOm0j62HAWP+DoofjsHNJQ==
+
 react-is@^16.8.1:
   version "16.8.3"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.3.tgz#4ad8b029c2a718fc0cfc746c8d4e1b7221e5387d"
