@@ -21,9 +21,6 @@ def create():
     whisky, errors = whisky_schema.load(request.get_json())
     # whisky.creator = g.current_user
 
-    # This line is for development use only, will break in production
-    whisky.distillery = Distillery.query.get(1)
-
     if errors:
         return jsonify(errors), 422
 
@@ -70,3 +67,26 @@ def delete(whisky_id):
     whisky = Whisky.query.get(whisky_id)
     whisky.remove()
     return '', 204
+
+@api.route('/recommendation', methods=['GET'])
+@secure_route
+def recommend():
+    def filter_likes(whisky):
+        if len(whisky.tasted_by) > 0:
+            return True
+        return False
+
+    def filter_uniques(whisky):
+        if (whisky.tasted_by.count(g.current_user)) > 0:
+            return False
+        return True
+
+    def get_length(whisky):
+        return len(whisky.tasted_by)
+
+    whiskies = Whisky.query.all()
+    liked_whiskies = filter(filter_likes, whiskies)
+    unique_likes = filter(filter_uniques, liked_whiskies)
+    sorted_uniques = sorted(unique_likes, key=get_length, reverse=True)
+
+    return whisky_schema.jsonify(sorted_uniques[0])

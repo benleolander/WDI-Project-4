@@ -1,12 +1,29 @@
+$primary: rgb(128,63,30);
+$header-font-family: 'Josefin Sans', sans-serif;
+$header-font-weight: 700;
+$body-font-family:  'Open Sans', sans-serif;
+
+//OVERWRITTEN BULMA VARIABLES **************************************************
+$title-color: rgb(128,63,30);
+$body-background-color: rgb(250,235,215);
+$info: dodgerblue;
+$danger: rgb(178,34,34);
+
+@import "../node_modules/bulma/bulma.sass";
+
+* {
+  font-family: $body-font-family;
+}
+
 //NAVBAR COMPONENT *************************************************************
 
 .navbar {
-  background-color: rgb(128,63,30);
+  background-color: $primary;
 }
 
 #navbar-hero {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 700;
+  font-family: $header-font-family;
+  font-weight: $header-font-weight;
   color: white;
 }
 
@@ -23,7 +40,7 @@ a#navbar-logo.navbar-item {
 }
 
 .navbar-menu {
-  font-family: 'Open Sans', sans-serif;
+  font-family: $body-font-family;
 
   a.navbaritem {
     color: white;
@@ -36,7 +53,7 @@ a#navbar-logo.navbar-item {
 }
 
 .navbar-end {
-  font-family: 'Open Sans', sans-serif;
+  font-family: $body-font-family;
 
   a.navbaritem {
     color: white;
@@ -74,9 +91,73 @@ a#navbar-logo.navbar-item {
   background-clip: border-box;
 }
 
+//WHISKIESINDEX COMPONENT ******************************************************
+
+#whisky-create-button {
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+///DISTILLERIESINDEX COMPONENT *************************************************
+
+#distillery-create-button {
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
 //WHISKYSHOW COMPONENT *********************************************************
 
 h3.title {
-  font-family: 'Josefin Sans', sans-serif;
-  font-weight: 700;
+  font-family: $header-font-family;
+  font-weight: $header-font-weight;
+}
+
+#whisky-show-img {
+  img {
+    max-height: 75vh;
+    width: auto;
+    margin: 0 auto;
+    border: 2px solid $primary;
+  }
+}
+
+.whisky-show-rerouter-button {
+  margin-right: 10px;
+}
+
+//DISTILLERYSHOW COMPONENT *****************************************************
+
+#mapDiv {
+  width: 100%;
+  height: 300px;
+}
+
+//PROFILESHOW COMPONENT ********************************************************
+
+.profile-show-column {
+  h1 {
+    font-family: $header-font-family;
+    font-weight: $header-font-weight;
+  }
+}
+
+#whisky-recommendation-button {
+  margin: 25% 0;
+}
+
+//FOOTER COMPONENT *************************************************************
+
+.footer {
+  background-color: $primary;
+
+  div {
+    p {
+      color: white;
+      strong {
+        font-family: $header-font-family;
+        font-weight: $header-font-weight;
+        color: white;
+      }
+    }
+  }
 }

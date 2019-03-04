@@ -58,9 +58,9 @@ class UserSchema(ma.ModelSchema, BaseSchema):
     )
     password_confirmation = fields.String(required=True)
 
-    tasted = fields.Nested('WhiskySchema', only=('name', ), many=True)
+    tasted = fields.Nested('WhiskySchema', only=('name', 'id'), many=True)
 
-    visited = fields.Nested('DistillerySchema', only=('name', ), many=True)
+    visited = fields.Nested('DistillerySchema', only=('name', 'id'), many=True)
 
     class Meta:
         model = User

@@ -45,7 +45,7 @@ def update(distillery_id):
 
     return distillery_schema.jsonify(distillery), 200
 
-@api.route('/distilleries/<int:distillery_id>/visit', methods=['PUT'])
+@api.route('/distilleries/<int:distillery_id>/visit', methods=['GET'])
 @secure_route
 def taste(distillery_id):
 
