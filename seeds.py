@@ -19,6 +19,24 @@ with app.app_context():
     )
     mongoose.save()
 
+    mattbellamy = User(
+        username='MattBellamy',
+        email='conspiracies@gov.uk'
+    )
+    mattbellamy.save()
+
+    chriswolstenholme = User(
+        username='ChrisBass',
+        email='toomany@kids.com'
+    )
+    chriswolstenholme.save()
+
+    domhoward = User(
+        username='SlipknotMask',
+        email='dating@spicegirls.co.uk'
+    )
+    domhoward.save()
+
     dalmore = Distillery(
         name='Dalmore Distillery',
         # pylint: disable=C0301
@@ -138,7 +156,9 @@ with app.app_context():
         description='Yamazaki 12 year Old is a pioneering malt in Japan, for which Suntory deserve great credit. In its early days, it was rounded and delicate...now it is more intense, confident and elegant. 8/10 –  Michael Jackson, Whisky Magazine, Oct 2002',
         abv=43,
         cask='Sherry',
-        distillery=yamazaki
+        distillery=yamazaki,
+        tasted_by=[johnny, mongoose, mattbellamy, chriswolstenholme, domhoward]
+
     )
     yamazaki_12.save()
 
@@ -150,7 +170,8 @@ with app.app_context():
         description='An introductory malt from Yamazaki, Japan\'s oldest distillery (founded in 1923). This is mild-mannered, clean, sweet malt, charming and very accessible - Speyside fans looking to try a Japanese malt should start here.',
         abv=43,
         cask='Sherry',
-        distillery=yamazaki
+        distillery=yamazaki,
+        tasted_by=[johnny, mongoose, chriswolstenholme]
     )
     yamazaki_10.save()
 
@@ -209,7 +230,8 @@ with app.app_context():
         description='The 2018 edition of Macallan\'s legendary Sherry Oak 18 Year Old, part of a range that celebrates the marriage of its rich spirit with the finest sherry-seasoned oak casks. In this case, the result of ageing Macallan\'s spirit solely in sherry casks for 18 years is a full bodied, fruity whisky with notes of ginger, raisin and mature oak.',
         abv=43,
         cask='Sherry',
-        distillery=macallan
+        distillery=macallan,
+        tasted_by=[johnny, mongoose, domhoward]
     )
     macallan_18.save()
 
@@ -221,6 +243,7 @@ with app.app_context():
         description='The Macallan Estate Reserve draws on casks selected for maximum intensity and depth of flavours, including some sherry-seasoned hogsheads, and has been bottled at the traditional strength of 80 UK prooof (45.7%). The 1824 Collection is a range of Macallans released for the travel retail market.',
         abv=46,
         cask='Sherry',
-        distillery=macallan
+        distillery=macallan,
+        tasted_by=[johnny, mongoose]
     )
     macallan_estate.save()

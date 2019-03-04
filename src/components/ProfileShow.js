@@ -82,7 +82,7 @@ class ProfileShow extends React.Component {
 
           <div className="column is-half">
             {!this.state.recommendation &&
-              <button className="button is-primary" onClick={this.generateRecommendation}>
+              <button className="button is-primary" id="whisky-recommendation-button" onClick={this.generateRecommendation}>
                 Get a Whisky Recommendation
               </button>
             }
