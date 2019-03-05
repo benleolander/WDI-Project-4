@@ -3,7 +3,7 @@ import ReactFileStack from 'filestack-react'
 
 const WhiskyForm = ({ data, errors, distilleries, handleChange, handleDistilleryChange, handleSubmit }) => {
 
-  const {  abv, age, cask, description, distillery, image, name, price } = data
+  const {  abv, age, cask, description, distillery, name, price } = data
 
   return(
     <form onSubmit={handleSubmit}>
@@ -74,14 +74,19 @@ const WhiskyForm = ({ data, errors, distilleries, handleChange, handleDistillery
       <div className="field">
         <label className="label">Image</label>
         <div className="control">
-          <input
-            className="input"
-            name="image"
-            placeholder="Required"
-            value={image}
-            onChange={handleChange}
+          <ReactFileStack
+            apikey={process.env.FILESTACK_KEY}
+            mode={'pick'}
+            onSuccess={(res) => handleChange({
+              target: {
+                name: 'image',
+                value: res.filesUploaded[0].url
+              }})}
+            onError={(err) => console.error(err)}
+            buttonText={'Add/Upload Image'}
+            buttonClass={'filestack-btn button is-info'}
           />
-          {errors.image && <small className="help is-danger">{errors.image}</small>}
+          {errors.image && <small className="help is-primary">{errors.image}</small>}
         </div>
       </div>
 
