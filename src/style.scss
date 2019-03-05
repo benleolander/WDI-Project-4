@@ -41,15 +41,16 @@ a#navbar-logo.navbar-item {
 
 .navbar-menu {
   font-family: $body-font-family;
+  background-color: $primary;
 
   a.navbaritem {
     color: white;
     margin: auto 10px;
   }
-
   :hover {
     border-bottom: 3px solid white;
   }
+
 }
 
 .navbar-end {
