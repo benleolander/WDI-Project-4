@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactFileStack from 'filestack-react'
+import MapboxAutocomplete from 'react-mapbox-autocomplete'
 
-const DistilleryForm = ({ data, errors, handleChange, handleSubmit }) => {
+const DistilleryForm = ({ data, errors, suggestionSelect, handleChange, handleSubmit }) => {
 
   const { name, founded, town, country } = data
 
@@ -80,6 +81,21 @@ const DistilleryForm = ({ data, errors, handleChange, handleSubmit }) => {
             onChange={handleChange}
           />
           {errors.country && <small className="help is-danger">{errors.country}</small>}
+        </div>
+      </div>
+
+      <div className="field">
+        <label className="label">Location</label>
+        <div className="control">
+          <MapboxAutocomplete
+            publicKey={process.env.MAPBOX_TOKEN}
+            inputClass="input"
+            onSuggestionSelect={suggestionSelect}
+            resetSearch={false}
+            onchange={handleChange}
+            name="location"
+            value={data.address}
+          />
         </div>
       </div>
 

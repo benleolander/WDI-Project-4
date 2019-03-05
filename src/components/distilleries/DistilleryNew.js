@@ -22,6 +22,7 @@ class DistilleryNew extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.suggestionSelect = this.suggestionSelect.bind(this)
   }
 
   handleChange({target: { name, value }}) {
@@ -42,6 +43,19 @@ class DistilleryNew extends React.Component {
       .catch(err => this.setState({errors: err.response.data}))
   }
 
+  suggestionSelect(result, lat, lng) {
+    console.log(result, lat, lng)
+    const data = {
+      ...this.state.data,
+      lat: lat,
+      lng: lng,
+      address: result
+    }
+    const errors = { ...this.state.errors, lat: '', lng: '' }
+
+    this.setState({data, errors})
+  }
+
   render() {
     return(
       <section className="section">
@@ -50,6 +64,7 @@ class DistilleryNew extends React.Component {
           <DistilleryForm
             data={this.state.data}
             errors={this.state.errors}
+            suggestionSelect={this.suggestionSelect}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
           />
