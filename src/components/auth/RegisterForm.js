@@ -18,7 +18,7 @@ const RegisterForm = ({ data, errors, handleChange, handleSubmit }) => {
             value={username}
             onChange={handleChange}
           />
-          {errors.username && <small className="help is-danger">{errors.username}</small>}
+          {errors.message && <small className="help is-danger">{errors.message}</small>}
         </div>
       </div>
 
@@ -32,7 +32,7 @@ const RegisterForm = ({ data, errors, handleChange, handleSubmit }) => {
             value={email}
             onChange={handleChange}
           />
-          {errors.email && <small className="help is-danger">{errors.email}</small>}
+          {errors.message && <small className="help is-danger">{errors.message}</small>}
         </div>
       </div>
 

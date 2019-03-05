@@ -52,10 +52,22 @@ class UserSchema(ma.ModelSchema, BaseSchema):
                 'password_confirmation'
             )
 
+    # @validates_schema
+    # # pylint: disable=R0201
+    # def validate_email(self, data):
+    #     email = data.get('email')
+    #     if email.count('@')) is 0:
+    #         raise ValidationError(
+    #             'This is not a valid email address',
+    #             'email'
+    #         )
+
+
     password = fields.String(
         required=True,
         validate=[validate.Length(min=8, max=50)]
     )
+
     password_confirmation = fields.String(required=True)
 
     tasted = fields.Nested('WhiskySchema', only=('name', 'id'), many=True)

@@ -18,7 +18,8 @@ class WhiskyEdit extends React.Component {
         image: '',
         name: '',
         price: ''
-      }
+      },
+      errors: {}
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -34,13 +35,15 @@ class WhiskyEdit extends React.Component {
           .then(res => {
             this.setState({ distilleries: res.data}), () => console.log(this.state)
           })
+
       })
 
   }
 
   handleChange({ target: {name, value }}) {
     const data = {...this.state.data, [name]: value}
-    this.setState({ data })
+    const errors = {...this.state.errors, [name]: null}
+    this.setState({ data, errors })
   }
 
   handleDistilleryChange({target: { value }}) {
@@ -59,6 +62,7 @@ class WhiskyEdit extends React.Component {
       .then(() => {
         this.props.history.push(`/whiskies/${this.props.match.params.id}`)
       })
+      .catch(err => this.setState({ errors: err.response.data}) )
 
   }
 
@@ -70,6 +74,7 @@ class WhiskyEdit extends React.Component {
           <h2 className="title">Edit Whisky</h2>
           <WhiskyForm
             data={this.state.data}
+            errors={this.state.errors}
             distilleries={this.state.distilleries}
             handleChange={this.handleChange}
             handleDistilleryChange={this.handleDistilleryChange}

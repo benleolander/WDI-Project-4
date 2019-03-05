@@ -19,7 +19,8 @@ class WhiskyNew extends React.Component {
         image: '',
         name: '',
         price: ''
-      }
+      },
+      errors: {}
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -33,7 +34,8 @@ class WhiskyNew extends React.Component {
 
   handleChange({target: { name, value }}) {
     const data = {...this.state.data, [name]: value }
-    this.setState({ data })
+    const errors = {...this.state.errors, [name]: null}
+    this.setState({ data, errors })
   }
 
   handleDistilleryChange({target: { value }}) {
@@ -51,6 +53,7 @@ class WhiskyNew extends React.Component {
         { headers: { Authorization: `Bearer ${Auth.getToken()}`}}
       )
       .then(() => this.props.history.push('/whiskies'))
+      .catch(err => this.setState({ errors: err.response.data}) )
   }
 
   render() {
@@ -60,6 +63,7 @@ class WhiskyNew extends React.Component {
         <div className="container">
           <WhiskyForm
             data={this.state.data}
+            errors={this.state.errors}
             distilleries={this.state.distilleries}
             handleChange={this.handleChange}
             handleDistilleryChange={this.handleDistilleryChange}

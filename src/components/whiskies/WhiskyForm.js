@@ -1,6 +1,6 @@
 import React from 'react'
 
-const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, handleSubmit }) => {
+const WhiskyForm = ({ data, errors, distilleries, handleChange, handleDistilleryChange, handleSubmit }) => {
 
   const {  abv, age, cask, description, distillery, image, name, price } = data
 
@@ -18,6 +18,7 @@ const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, 
             value={name}
             onChange={handleChange}
           />
+          {errors.name && <small className="help is-danger">{errors.name}</small>}
         </div>
       </div>
 
@@ -52,6 +53,7 @@ const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, 
             value={age}
             onChange={handleChange}
           />
+          {errors.age && <small className="help is-danger">{errors.age}</small>}
         </div>
       </div>
 
@@ -65,6 +67,7 @@ const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, 
             value={abv}
             onChange={handleChange}
           />
+          {errors.abv && <small className="help is-danger">{errors.abv}</small>}
         </div>
       </div>
 
@@ -78,6 +81,7 @@ const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, 
             value={image}
             onChange={handleChange}
           />
+          {errors.image && <small className="help is-danger">{errors.image}</small>}
         </div>
       </div>
 
@@ -91,6 +95,7 @@ const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, 
             value={price}
             onChange={handleChange}
           />
+          {errors.price && <small className="help is-danger">{errors.price}</small>}
         </div>
       </div>
 
@@ -104,6 +109,7 @@ const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, 
             value={cask}
             onChange={handleChange}
           />
+          {errors.cask && <small className="help is-danger">{errors.cask}</small>}
         </div>
       </div>
 
@@ -117,6 +123,7 @@ const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, 
             value={description}
             onChange={handleChange}
           />
+          {errors.description && <small className="help is-danger">{errors.description}</small>}
         </div>
       </div>
 
