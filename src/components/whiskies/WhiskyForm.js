@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactFileStack from 'filestack-react'
 
 const WhiskyForm = ({ data, errors, distilleries, handleChange, handleDistilleryChange, handleSubmit }) => {
 
@@ -6,7 +7,6 @@ const WhiskyForm = ({ data, errors, distilleries, handleChange, handleDistillery
 
   return(
     <form onSubmit={handleSubmit}>
-      <h2 className="title">Add a Whisky</h2>
 
       <div className="field">
         <label className="label">Name</label>

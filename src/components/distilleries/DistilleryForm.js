@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DistilleryForm = ({ data, handleChange, handleSubmit }) => {
+const DistilleryForm = ({ data, errors, handleChange, handleSubmit }) => {
 
   const { name, image, founded, town, country } = data
 
@@ -18,6 +18,7 @@ const DistilleryForm = ({ data, handleChange, handleSubmit }) => {
             value={name}
             onChange={handleChange}
           />
+          {errors.name && <small className="help is-danger">{errors.name}</small>}
         </div>
       </div>
 
@@ -31,6 +32,7 @@ const DistilleryForm = ({ data, handleChange, handleSubmit }) => {
             value={image}
             onChange={handleChange}
           />
+          {errors.image && <small className="help is-danger">{errors.image}</small>}
         </div>
       </div>
 
@@ -44,6 +46,7 @@ const DistilleryForm = ({ data, handleChange, handleSubmit }) => {
             value={founded}
             onChange={handleChange}
           />
+          {errors.founded && <small className="help is-danger">{errors.founded}</small>}
         </div>
       </div>
 
@@ -57,6 +60,7 @@ const DistilleryForm = ({ data, handleChange, handleSubmit }) => {
             value={town}
             onChange={handleChange}
           />
+          {errors.town && <small className="help is-danger">{errors.town}</small>}
         </div>
       </div>
 
@@ -70,6 +74,7 @@ const DistilleryForm = ({ data, handleChange, handleSubmit }) => {
             value={country}
             onChange={handleChange}
           />
+          {errors.country && <small className="help is-danger">{errors.country}</small>}
         </div>
       </div>
 

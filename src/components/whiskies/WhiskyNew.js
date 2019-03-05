@@ -53,7 +53,7 @@ class WhiskyNew extends React.Component {
         { headers: { Authorization: `Bearer ${Auth.getToken()}`}}
       )
       .then(() => this.props.history.push('/whiskies'))
-      .catch(err => this.setState({ errors: err.response.data}) )
+      .catch(err => this.setState({ errors: (err.response.data || err.message)}) )
   }
 
   render() {
@@ -61,6 +61,7 @@ class WhiskyNew extends React.Component {
     return(
       <section className="section">
         <div className="container">
+          <h2 className="title">Add a Whisky</h2>
           <WhiskyForm
             data={this.state.data}
             errors={this.state.errors}

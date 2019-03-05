@@ -16,7 +16,8 @@ class DistilleryEdit extends React.Component {
         founded: '',
         town: '',
         country: ''
-      }
+      },
+      errors: {}
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -31,7 +32,8 @@ class DistilleryEdit extends React.Component {
 
   handleChange({target: { name, value }}) {
     const data = {...this.state.data, [name]: value }
-    this.setState({ data })
+    const errors = {...this.state.errors, [name]: null}
+    this.setState({ data, errors })
   }
 
   handleSubmit(e) {
@@ -43,6 +45,7 @@ class DistilleryEdit extends React.Component {
         { headers: { Authorization: `Bearer ${Auth.getToken()}`}}
       )
       .then(() => this.props.history.push('/distilleries'))
+      .catch(err => this.setState({ errors: err.response.data }))
   }
 
   render() {
@@ -51,6 +54,7 @@ class DistilleryEdit extends React.Component {
         <div className="container">
           <DistilleryForm
             data={this.state.data}
+            errors={this.state.errors}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
           />
