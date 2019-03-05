@@ -84,11 +84,20 @@ a#navbar-logo.navbar-item {
 
 //HOME COMPONENT ***************************************************************
 
+.home-hero-title {
+  font-family: $header-font-family;
+  font-weight: $header-font-weight;
+  color: white;
+  margin: auto;
+}
+
 #homeColumn1 {
   background-image: url('./assets/whiskyShelf.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-clip: border-box;
+  display: flex;
+  justify-content: space-around;
   height: 100vh;
 }
 
@@ -97,6 +106,9 @@ a#navbar-logo.navbar-item {
   background-size: cover;
   background-repeat: no-repeat;
   background-clip: border-box;
+  display: flex;
+  justify-content: space-around;
+  height: 100vh;
 }
 
 //WHISKIESINDEX COMPONENT ******************************************************
