@@ -1,12 +1,12 @@
 import React from 'react'
+import ReactFileStack from 'filestack-react'
 
-const DistilleryForm = ({ data, handleChange, handleSubmit }) => {
+const DistilleryForm = ({ data, errors, handleChange, handleSubmit }) => {
 
-  const { name, image, founded, town, country } = data
+  const { name, founded, town, country } = data
 
   return(
     <form onSubmit={handleSubmit}>
-      <h2 className="title">Add a Distillery</h2>
 
       <div className="field">
         <label className="label">Name</label>
@@ -18,19 +18,26 @@ const DistilleryForm = ({ data, handleChange, handleSubmit }) => {
             value={name}
             onChange={handleChange}
           />
+          {errors.name && <small className="help is-danger">{errors.name}</small>}
         </div>
       </div>
 
       <div className="field">
         <label className="label">Image</label>
         <div className="control">
-          <input
-            className="input"
-            name="image"
-            placeholder="Required"
-            value={image}
-            onChange={handleChange}
+          <ReactFileStack
+            apikey={process.env.FILESTACK_KEY}
+            mode={'pick'}
+            onSuccess={(res) => handleChange({
+              target: {
+                name: 'image',
+                value: res.filesUploaded[0].url
+              }})}
+            onError={(err) => console.error(err)}
+            buttonText={'Add/Upload Image'}
+            buttonClass={'filestack-btn button is-primary'}
           />
+          {errors.image && <small className="help is-danger">{errors.image}</small>}
         </div>
       </div>
 
@@ -44,6 +51,7 @@ const DistilleryForm = ({ data, handleChange, handleSubmit }) => {
             value={founded}
             onChange={handleChange}
           />
+          {errors.founded && <small className="help is-danger">{errors.founded}</small>}
         </div>
       </div>
 
@@ -57,6 +65,7 @@ const DistilleryForm = ({ data, handleChange, handleSubmit }) => {
             value={town}
             onChange={handleChange}
           />
+          {errors.town && <small className="help is-danger">{errors.town}</small>}
         </div>
       </div>
 
@@ -70,6 +79,7 @@ const DistilleryForm = ({ data, handleChange, handleSubmit }) => {
             value={country}
             onChange={handleChange}
           />
+          {errors.country && <small className="help is-danger">{errors.country}</small>}
         </div>
       </div>
 

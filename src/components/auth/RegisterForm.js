@@ -1,7 +1,7 @@
 import React from 'react'
 
-const RegisterForm = ({ data, handleChange, handleSubmit }) => {
-  
+const RegisterForm = ({ data, errors, handleChange, handleSubmit }) => {
+
   const { username, email, password, password_confirmation } = data // eslint-disable-line
 
   return(
@@ -18,6 +18,7 @@ const RegisterForm = ({ data, handleChange, handleSubmit }) => {
             value={username}
             onChange={handleChange}
           />
+          {errors.message && <small className="help is-danger">{errors.message}</small>}
         </div>
       </div>
 
@@ -31,6 +32,7 @@ const RegisterForm = ({ data, handleChange, handleSubmit }) => {
             value={email}
             onChange={handleChange}
           />
+          {errors.message && <small className="help is-danger">{errors.message}</small>}
         </div>
       </div>
 
@@ -45,6 +47,8 @@ const RegisterForm = ({ data, handleChange, handleSubmit }) => {
             value={password}
             onChange={handleChange}
           />
+          {errors.password && <small className="help is-danger">{errors.password}</small>}
+          {errors.password_confirmation && <small className="help is-danger">{errors.password_confirmation}</small>}
         </div>
       </div>
 
@@ -59,6 +63,7 @@ const RegisterForm = ({ data, handleChange, handleSubmit }) => {
             value={password_confirmation} // eslint-disable-line
             onChange={handleChange}
           />
+          {errors.password_confirmation && <small className="help is-danger">{errors.password_confirmation}</small>}
         </div>
       </div>
 

@@ -18,10 +18,12 @@ class WhiskyEdit extends React.Component {
         image: '',
         name: '',
         price: ''
-      }
+      },
+      errors: {}
     }
 
     this.handleChange = this.handleChange.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
     this.handleDistilleryChange = this.handleDistilleryChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -34,13 +36,22 @@ class WhiskyEdit extends React.Component {
           .then(res => {
             this.setState({ distilleries: res.data}), () => console.log(this.state)
           })
+
       })
 
   }
 
+  handleDelete() {
+    axios.delete(`/api/whiskies/${this.props.match.params.id}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(() => this.props.history.push('/whiskies'))
+  }
+
   handleChange({ target: {name, value }}) {
     const data = {...this.state.data, [name]: value}
-    this.setState({ data })
+    const errors = {...this.state.errors, [name]: null}
+    this.setState({ data, errors })
   }
 
   handleDistilleryChange({target: { value }}) {
@@ -59,6 +70,7 @@ class WhiskyEdit extends React.Component {
       .then(() => {
         this.props.history.push(`/whiskies/${this.props.match.params.id}`)
       })
+      .catch(err => this.setState({ errors: err.response.data}) )
 
   }
 
@@ -67,9 +79,13 @@ class WhiskyEdit extends React.Component {
     return(
       <main className="section">
         <div className="container">
-          <h2 className="title">Edit Whisky</h2>
+          <div className="form-header">
+            <h2 className="title">Edit Whisky</h2>
+            <button className="button is-danger whisky-show-rerouter-button"  onClick={this.handleDelete}>Delete {this.state.data.name}</button>
+          </div>
           <WhiskyForm
             data={this.state.data}
+            errors={this.state.errors}
             distilleries={this.state.distilleries}
             handleChange={this.handleChange}
             handleDistilleryChange={this.handleDistilleryChange}

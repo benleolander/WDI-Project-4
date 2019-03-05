@@ -39,17 +39,22 @@ a#navbar-logo.navbar-item {
   max-height: none;
 }
 
+.navbar-burger span {
+  background-color: white;
+}
+
 .navbar-menu {
   font-family: $body-font-family;
+  background-color: $primary;
 
   a.navbaritem {
     color: white;
     margin: auto 10px;
+    a.navbaritem:hover {
+      border-bottom: 3px solid white;
+    }
   }
 
-  :hover {
-    border-bottom: 3px solid white;
-  }
 }
 
 .navbar-end {
@@ -58,6 +63,9 @@ a#navbar-logo.navbar-item {
   a.navbaritem {
     color: white;
     margin: auto 10px;
+    a.navbaritem:hover {
+      border-bottom: 3px solid white;
+    }
   }
 
   button.navbaritem {
@@ -67,20 +75,29 @@ a#navbar-logo.navbar-item {
     padding: 0;
     color: white;
     background-color: inherit;
+    button.navbaritem:hover {
+      border-bottom: 3px solid white;
+    }
   }
 
-  :hover {
-    border-bottom: 3px solid white;
-  }
 }
 
 //HOME COMPONENT ***************************************************************
+
+.home-hero-title {
+  font-family: $header-font-family;
+  font-weight: $header-font-weight;
+  color: white;
+  margin: auto;
+}
 
 #homeColumn1 {
   background-image: url('./assets/whiskyShelf.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-clip: border-box;
+  display: flex;
+  justify-content: space-around;
   height: 100vh;
 }
 
@@ -89,6 +106,9 @@ a#navbar-logo.navbar-item {
   background-size: cover;
   background-repeat: no-repeat;
   background-clip: border-box;
+  display: flex;
+  justify-content: space-around;
+  height: 100vh;
 }
 
 //WHISKIESINDEX COMPONENT ******************************************************
@@ -123,6 +143,11 @@ h3.title {
 
 .whisky-show-rerouter-buttons {
   margin-right: 10px;
+}
+
+.form-header {
+  display: flex;
+  justify-content: space-between;
 }
 
 //DISTILLERYSHOW COMPONENT *****************************************************

@@ -16,11 +16,13 @@ class DistilleryEdit extends React.Component {
         founded: '',
         town: '',
         country: ''
-      }
+      },
+      errors: {}
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
@@ -31,7 +33,8 @@ class DistilleryEdit extends React.Component {
 
   handleChange({target: { name, value }}) {
     const data = {...this.state.data, [name]: value }
-    this.setState({ data })
+    const errors = {...this.state.errors, [name]: null}
+    this.setState({ data, errors })
   }
 
   handleSubmit(e) {
@@ -43,14 +46,28 @@ class DistilleryEdit extends React.Component {
         { headers: { Authorization: `Bearer ${Auth.getToken()}`}}
       )
       .then(() => this.props.history.push('/distilleries'))
+      .catch(err => this.setState({ errors: err.response.data }))
+  }
+
+
+  handleDelete() {
+    axios.delete(`/api/distilleries/${this.props.match.params.id}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(() => this.props.history.push('/distilleries'))
   }
 
   render() {
     return(
       <section className="section">
         <div className="container">
+          <div className="form-header">
+            <h2 className="title">Edit Distillery</h2>
+            <button className="button is-danger" onClick={this.handleDelete}>Delete {this.state.data.name} & Whiskies</button>
+          </div>
           <DistilleryForm
             data={this.state.data}
+            errors={this.state.errors}
             handleChange={this.handleChange}
             handleSubmit={this.handleSubmit}
           />

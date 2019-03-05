@@ -1,12 +1,12 @@
 import React from 'react'
+import ReactFileStack from 'filestack-react'
 
-const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, handleSubmit }) => {
+const WhiskyForm = ({ data, errors, distilleries, handleChange, handleDistilleryChange, handleSubmit }) => {
 
-  const {  abv, age, cask, description, distillery, image, name, price } = data
+  const {  abv, age, cask, description, distillery, name, price } = data
 
   return(
     <form onSubmit={handleSubmit}>
-      <h2 className="title">Add a Whisky</h2>
 
       <div className="field">
         <label className="label">Name</label>
@@ -18,6 +18,7 @@ const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, 
             value={name}
             onChange={handleChange}
           />
+          {errors.name && <small className="help is-danger">{errors.name}</small>}
         </div>
       </div>
 
@@ -52,6 +53,7 @@ const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, 
             value={age}
             onChange={handleChange}
           />
+          {errors.age && <small className="help is-danger">{errors.age}</small>}
         </div>
       </div>
 
@@ -65,19 +67,26 @@ const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, 
             value={abv}
             onChange={handleChange}
           />
+          {errors.abv && <small className="help is-danger">{errors.abv}</small>}
         </div>
       </div>
 
       <div className="field">
         <label className="label">Image</label>
         <div className="control">
-          <input
-            className="input"
-            name="image"
-            placeholder="Required"
-            value={image}
-            onChange={handleChange}
+          <ReactFileStack
+            apikey={process.env.FILESTACK_KEY}
+            mode={'pick'}
+            onSuccess={(res) => handleChange({
+              target: {
+                name: 'image',
+                value: res.filesUploaded[0].url
+              }})}
+            onError={(err) => console.error(err)}
+            buttonText={'Add/Upload Image'}
+            buttonClass={'filestack-btn button is-info'}
           />
+          {errors.image && <small className="help is-primary">{errors.image}</small>}
         </div>
       </div>
 
@@ -91,6 +100,7 @@ const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, 
             value={price}
             onChange={handleChange}
           />
+          {errors.price && <small className="help is-danger">{errors.price}</small>}
         </div>
       </div>
 
@@ -104,6 +114,7 @@ const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, 
             value={cask}
             onChange={handleChange}
           />
+          {errors.cask && <small className="help is-danger">{errors.cask}</small>}
         </div>
       </div>
 
@@ -117,6 +128,7 @@ const WhiskyForm = ({ data, distilleries, handleChange, handleDistilleryChange, 
             value={description}
             onChange={handleChange}
           />
+          {errors.description && <small className="help is-danger">{errors.description}</small>}
         </div>
       </div>
 

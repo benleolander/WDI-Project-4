@@ -11,7 +11,8 @@ class Login extends React.Component {
       data: {
         email: '',
         password: ''
-      }
+      },
+      errors: {}
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -19,7 +20,8 @@ class Login extends React.Component {
 
   handleChange({target: { name, value }}) {
     const data = {...this.state.data, [name]: value }
-    this.setState({ data })
+    const errors = {...this.state.errors, [name]: null}
+    this.setState({ data, errors })
   }
 
 
@@ -31,6 +33,7 @@ class Login extends React.Component {
         Auth.setToken(res.data.token)
         this.props.history.push('/')
       })
+      .catch(err => this.setState({ errors: err.response.data}) )
   }
 
   render() {
@@ -65,6 +68,7 @@ class Login extends React.Component {
                   value={this.state.data.password}
                   onChange={this.handleChange}
                 />
+                {this.state.errors.message && <small className="help is-danger">{this.state.errors.message}</small>}
               </div>
             </div>
 
