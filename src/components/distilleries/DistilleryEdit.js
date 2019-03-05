@@ -22,6 +22,7 @@ class DistilleryEdit extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
@@ -48,10 +49,22 @@ class DistilleryEdit extends React.Component {
       .catch(err => this.setState({ errors: err.response.data }))
   }
 
+
+  handleDelete() {
+    axios.delete(`/api/distilleries/${this.props.match.params.id}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(() => this.props.history.push('/distilleries'))
+  }
+
   render() {
     return(
       <section className="section">
         <div className="container">
+          <div className="form-header">
+            <h2 className="title">Edit Distillery</h2>
+            <button className="button is-danger" onClick={this.handleDelete}>Delete {this.state.data.name} & Whiskies</button>
+          </div>
           <DistilleryForm
             data={this.state.data}
             errors={this.state.errors}

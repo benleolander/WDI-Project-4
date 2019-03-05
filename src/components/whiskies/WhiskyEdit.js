@@ -23,6 +23,7 @@ class WhiskyEdit extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
     this.handleDistilleryChange = this.handleDistilleryChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -38,6 +39,13 @@ class WhiskyEdit extends React.Component {
 
       })
 
+  }
+
+  handleDelete() {
+    axios.delete(`/api/whiskies/${this.props.match.params.id}`, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(() => this.props.history.push('/whiskies'))
   }
 
   handleChange({ target: {name, value }}) {
@@ -71,7 +79,10 @@ class WhiskyEdit extends React.Component {
     return(
       <main className="section">
         <div className="container">
-          <h2 className="title">Edit Whisky</h2>
+          <div className="form-header">
+            <h2 className="title">Edit Whisky</h2>
+            <button className="button is-danger whisky-show-rerouter-button"  onClick={this.handleDelete}>Delete {this.state.data.name}</button>
+          </div>
           <WhiskyForm
             data={this.state.data}
             errors={this.state.errors}

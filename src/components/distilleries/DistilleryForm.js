@@ -7,7 +7,6 @@ const DistilleryForm = ({ data, errors, handleChange, handleSubmit }) => {
 
   return(
     <form onSubmit={handleSubmit}>
-      <h2 className="title">Add a Distillery</h2>
 
       <div className="field">
         <label className="label">Name</label>

@@ -12,7 +12,6 @@ class WhiskyShow extends React.Component {
 
     this.addToTasted = this.addToTasted.bind(this)
     this.checkIfTasted = this.checkIfTasted.bind(this)
-    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
@@ -45,12 +44,7 @@ class WhiskyShow extends React.Component {
     return result
   }
 
-  handleDelete() {
-    axios.delete(`/api/whiskies/${this.props.match.params.id}`, {
-      headers: { Authorization: `Bearer ${Auth.getToken()}` }
-    })
-      .then(() => this.props.history.push('/whiskies'))
-  }
+
 
   render() {
     if(!this.state.data) return <h1>Loading...</h1>
@@ -76,8 +70,6 @@ class WhiskyShow extends React.Component {
               </div>
 
               {Auth.isAuthenticated() && <Link to={`/whiskies/${this.props.match.params.id}/edit`}><button className="button is-info whisky-show-rerouter-buttons">Edit</button></Link>}
-
-              {Auth.isAuthenticated() && <button className="button is-danger whisky-show-rerouter-button" onClick={this.handleDelete}>Delete</button>}
 
               <hr />
 

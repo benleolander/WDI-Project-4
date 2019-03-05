@@ -46,6 +46,7 @@ class DistilleryNew extends React.Component {
     return(
       <section className="section">
         <div className="container">
+          <h2 className="title">Add Distillery</h2>
           <DistilleryForm
             data={this.state.data}
             errors={this.state.errors}

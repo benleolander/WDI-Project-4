@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify, g
 from models.distillery import Distillery, DistillerySchema
+from models.whisky import Whisky
 from lib.secure_route import secure_route
 
 
@@ -62,5 +63,8 @@ def taste(distillery_id):
 @secure_route
 def delete(distillery_id):
     distillery = Distillery.query.get(distillery_id)
+    whiskies = Whisky.query.filter_by(distillery=distillery)
+    for whisky in whiskies:
+        whisky.remove()
     distillery.remove()
     return '', 204
