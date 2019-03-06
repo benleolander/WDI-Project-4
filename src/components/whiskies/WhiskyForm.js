@@ -39,6 +39,8 @@ const WhiskyForm = ({ data, errors, distilleries, handleChange, handleDistillery
               </option>
             })}
 
+            <option value="Add">Add a Distillery... </option>
+
           </select>
         </div>
       </div>

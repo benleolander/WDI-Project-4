@@ -25,9 +25,9 @@ class WhiskiesIndex extends React.Component {
         {Auth.isAuthenticated() && <Link to='/whiskies/new'><button className="button is-primary is-pulled-right" id="whisky-create-button">Add a Whisky</button></Link>}
         <section className="section">
           <div className="container">
-            <div className="columns is-multiline">
+            <div className="columns is-multiline is-mobile">
               {this.state.whiskies.map(whisky =>
-                <div className="column is-one-quarter" key={whisky.id}>
+                <div className="column is-one-quarter-desktop is-one-third-tablet is-half-mobile" key={whisky.id}>
                   <Link to={`/whiskies/${whisky.id}`}>
                     <WhiskyCard{...whisky} />
                   </Link>

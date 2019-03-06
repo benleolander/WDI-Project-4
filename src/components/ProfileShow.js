@@ -80,7 +80,7 @@ class ProfileShow extends React.Component {
 
           </div>
 
-          <div className="column is-half">
+          <div className="column is-half recommendation-column">
             {!this.state.recommendation &&
               <button className="button is-primary" id="whisky-recommendation-button" onClick={this.generateRecommendation}>
                 Get a Whisky Recommendation
@@ -89,7 +89,10 @@ class ProfileShow extends React.Component {
 
             {this.state.recommendation &&
               <Link to={`/whiskies/${this.state.recommendation.id}`}>
-                <WhiskyCard {...this.state.recommendation}/>
+                <WhiskyCard
+                  {...this.state.recommendation}
+                  id='recommendation-card'
+                />
               </Link>
             }
           </div>

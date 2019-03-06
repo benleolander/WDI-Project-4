@@ -41,6 +41,9 @@ class WhiskyNew extends React.Component {
   handleDistilleryChange({target: { value }}) {
     const distillery = this.state.distilleries.find(distillery => distillery.id === parseInt(value))
     const data = { ...this.state.data, distillery }
+    if (value === 'Add') {
+      this.props.history.push('/distilleries/new')
+    }
     this.setState({ data })
   }
 

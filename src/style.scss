@@ -99,6 +99,10 @@ a#navbar-logo.navbar-item {
   display: flex;
   justify-content: space-around;
   height: 100vh;
+  a:hover{
+    color: white;
+    border-bottom: 3px solid white;
+  }
 }
 
 #homeColumn2 {
@@ -109,6 +113,10 @@ a#navbar-logo.navbar-item {
   display: flex;
   justify-content: space-around;
   height: 100vh;
+  a:hover{
+    color: white;
+    border-bottom: 3px solid white;
+  }
 }
 
 //WHISKIESINDEX COMPONENT ******************************************************
@@ -117,6 +125,9 @@ a#navbar-logo.navbar-item {
   margin-right: 15px;
   margin-top: 15px;
 }
+
+//WHISKYCARD COMPONENT *********************************************************
+
 
 ///DISTILLERIESINDEX COMPONENT *************************************************
 
@@ -166,8 +177,26 @@ h3.title {
   }
 }
 
-#whisky-recommendation-button {
-  margin: 25% 0;
+.recommendation-column {
+  #recommendation-card {
+    transform: scale(0.6);
+    transform-origin: top left;
+
+    .card-content {
+      background-color: white;
+    }
+  }
+  #whisky-recommendation-button {
+    margin: 25% 0;
+  }
+}
+
+//FORM COMPONENTS **************************************************************
+
+form {
+  max-width: 50%;
+  padding: 1rem;
+  border: 2px solid $primary;
 }
 
 //FOOTER COMPONENT *************************************************************

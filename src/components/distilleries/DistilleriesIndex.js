@@ -25,9 +25,9 @@ class DistilleriesIndex extends React.Component {
         {Auth.isAuthenticated() && <Link to='/distilleries/new'><button className="button is-primary is-pulled-right" id="distillery-create-button">Add a Distillery</button></Link>}
         <section className="section">
           <div className="container">
-            <div className="columns is-multiline">
+            <div className="columns is-multiline is-mobile">
               {this.state.distilleries.map(distillery =>
-                <div className="column is-one-quarter" key={distillery.id}>
+                <div className="column is-one-quarter-desktop is-one-third-tablet is-half-mobile" key={distillery.id}>
                   <Link to={`/distilleries/${distillery.id}`}>
                     <DistilleryCard{...distillery} />
                   </Link>

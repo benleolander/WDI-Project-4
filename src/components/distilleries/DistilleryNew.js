@@ -44,7 +44,6 @@ class DistilleryNew extends React.Component {
   }
 
   suggestionSelect(result, lat, lng) {
-    console.log(result, lat, lng)
     const data = {
       ...this.state.data,
       lat: lat,
