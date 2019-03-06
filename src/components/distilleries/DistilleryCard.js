@@ -8,10 +8,12 @@ const WhiskyCard = ({ name, image, town, country }) => {
       </div>
 
       <div className="card-image">
-        <img
-          src={image}
-          alt={name}
-        />
+        <figure className="image is-5by3">
+          <img
+            src={image}
+            alt={name}
+          />
+        </figure>
       </div>
 
       <div className="card-content">
